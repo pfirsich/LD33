@@ -1,7 +1,5 @@
 require "cell"
 
-cellWidth = love.window.getWidth()
-
 do
 	world = { 
 		cells = {} 

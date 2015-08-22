@@ -1,4 +1,6 @@
 do
+	cellWidth = love.window.getWidth()
+
 	local addGameObjectTbl = {}
 
 	addGameObjectTbl["building"] = function(cell, obj) 
