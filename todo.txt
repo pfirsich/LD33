@@ -1,0 +1,27 @@
+ToDo
+
+- Spriter Importer
+
+- Core (Kleinscheiss)
+
+- World Generation
+	- Building/Infrastructure Generation
+	- City Generation
+
+- Spieler Charakter
+	- Laufen (an Gebäuden vorbei?)
+	- Auf Gebäude Klettern (Vor Gebäude und links+rechts eine Margin, in der der Spieler "Hoch" drücken kann um auf das Gebäude zu klettern (sowohl beim Laufen als auch im Sprung)
+	- Gebäude/NPCs angreifen
+	- Zwischen Ebenen wechseln per Specialmove
+
+- NPCs
+	- Soldaten
+	- Panzer
+	- Helikopter
+	- VIPs (Countdown+)
+
+- UI
+	- Countdown
+	- "Special"-Bar
+	- Killcount/Score
+
