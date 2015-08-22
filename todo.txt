@@ -5,7 +5,13 @@ ToDo
 - Core (Kleinscheiss)
 
 - World Generation
+	- World
+		[x] Liste von Zellen
+	- Zellen
+		[x] Liste für Gebäude
+		[x] Liste für NPCs
 	- Building/Infrastructure Generation
+		[x] Simples Gebäude (Fenster, Wände, Türen)
 	- City Generation
 
 - Spieler Charakter
