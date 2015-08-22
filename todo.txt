@@ -12,7 +12,7 @@ ToDo
 	- Laufen (an Gebäuden vorbei?)
 	- Auf Gebäude Klettern (Vor Gebäude und links+rechts eine Margin, in der der Spieler "Hoch" drücken kann um auf das Gebäude zu klettern (sowohl beim Laufen als auch im Sprung)
 	- Gebäude/NPCs angreifen
-	- Zwischen Ebenen 
+	- Zwischen Ebenen wechseln per Specialmove
 
 - NPCs
 	- Soldaten
