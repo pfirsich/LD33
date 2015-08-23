@@ -26,7 +26,7 @@ do
 		if love.joystick.getJoystickCount() > 0 then 
 			newPlayer("Test", newGamepadController(love.joystick.getJoysticks()[1]))
 		else 
-			newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
+			newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a", "s"))
 		end
 
 		camera.targetY = -400	
@@ -43,6 +43,8 @@ do
 	end 
 
 	function gameloop.draw()
+		love.graphics.draw(bgImage, 0, 0, 0, love.window.getWidth(), love.window.getHeight() / bgImage:getHeight())
+		
 		camera.push()
 		
 		world.render()
