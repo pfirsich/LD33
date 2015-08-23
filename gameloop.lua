@@ -42,12 +42,14 @@ do
 		end
 
 		local velocityCameraTranslationX = 0.6
-		local velocityCameraTranslationY = 0.3
+		local velocityCameraTranslationYPositive = 0.6
+		local velocityCameraTranslationYNegative = 0.4
+		local velocityCameraTranslationY = players[1].velocity[2] > 0 and velocityCameraTranslationYPositive or velocityCameraTranslationYNegative
 		camera.targetX = players[1].position[1] + players[1].width/2 + players[1].velocity[1] * velocityCameraTranslationX
 		camera.targetY = players[1].position[2] + players[1].height/2 + players[1].velocity[2] * velocityCameraTranslationY
 
 		local standingZoom = 1.5
-		local minZoom = 1.0
+		local minZoom = 0.8
 		local zoomVelFactor = 0.005
 		camera.targetZoom = minZoom + math.exp(-zoomVelFactor * vnorm(players[1].velocity)) * (standingZoom - minZoom)
 
