@@ -15,11 +15,6 @@ do
 		})
 
 		world.addGameObjects(city.generateNextCell(1))
-		world.addGameObjects(city.generateNextCell(1))
-		world.addGameObjects(city.generateNextCell(1))
-		world.addGameObjects(city.generateNextCell(-1))
-		world.addGameObjects(city.generateNextCell(-1))
-		world.addGameObjects(city.generateNextCell(-1))
 
 		-- change this later
 		--newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
