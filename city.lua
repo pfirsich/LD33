@@ -1,7 +1,7 @@
 require "building_gen"
 
 do
-	local avgDistance = 5
+	local avgDistance = 8
 
 	-- Below this threshold in distance between buildings the distance is reduced to 0
 	-- and the buildings are snapped together
@@ -46,16 +46,12 @@ do
 			local generationProperties = city.buildingGenerationProperties[buildingType]
 			local w = love.math.random(generationProperties.minWidth, generationProperties.maxWidth)
 			local h = love.math.random(generationProperties.minHeight, generationProperties.maxHeight)
-			local newBuilding = generateBuilding(buildingType, buildingX, w, h)
+			local tileSet = buildingTileSets[love.math.random(#buildingTileSets)]
+			generateBuilding(buildingType, tileSet, buildingX, w, h)
 
 			-- Break prematurely if new building crosses over cell boundary
 			if (buildingX + w) > (x + cellWidth) then
 				break
-			end
-
-			-- Merge new building game objects into generatedBuildings
-			for k,v in ipairs(newBuilding) do
-				table.insert(generatedBuildings, v)
 			end
 
 			-- Advance to the position next to the new building and insert 
