@@ -23,7 +23,11 @@ do
 		
 		-- change this later
 		--newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
-		newPlayer("Test", newGamepadController(love.joystick.getJoysticks()[1]))
+		if love.joystick.getJoystickCount() > 0 then 
+			newPlayer("Test", newGamepadController(love.joystick.getJoysticks()[1]))
+		else 
+			newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
+		end
 
 		camera.targetY = -400	
 	end 
