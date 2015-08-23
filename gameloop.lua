@@ -14,6 +14,7 @@ do
 			minHeight = 8, maxHeight = 15
 		})
 
+		city.generateNextCell(-1)
 		city.generateNextCell(1)
 
 		-- change this later
