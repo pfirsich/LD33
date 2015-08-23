@@ -28,6 +28,11 @@
         return x, y
     end
 
+    function camera.worldToScreen(x, y)
+        return  x * camera.scale - math.floor(camera.x * camera.scale) + love.window.getWidth()/2,
+                y * camera.scale - math.floor(camera.y * camera.scale) + love.window.getHeight()/2 
+    end 
+
     camera.pop = love.graphics.pop
 
     function camera.update(speed)

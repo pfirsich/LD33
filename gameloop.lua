@@ -32,13 +32,24 @@ do
 			players[i].update()
 		end 
 
-		camera.targetX = players[1].position[1] + players[1].width/2
-		camera.targetY = players[1].position[2] + players[1].height/2
+		local velocityCameraTranslationX = 0.6
+		local velocityCameraTranslationY = 0.3
+		camera.targetX = players[1].position[1] + players[1].width/2 + players[1].velocity[1] * velocityCameraTranslationX
+		camera.targetY = players[1].position[2] + players[1].height/2 + players[1].velocity[2] * velocityCameraTranslationY
+
+		local standingZoom = 1.5
+		local minZoom = 1.0
+		local zoomVelFactor = 0.005
+		camera.targetZoom = minZoom + math.exp(-zoomVelFactor * vnorm(players[1].velocity)) * (standingZoom - minZoom)
+
+		local maxTargetY = players[1].height/2 - love.window.getHeight()/2 / camera.scale
+		camera.targetY = math.min(maxTargetY, camera.targetY)
 		camera.update()
 	end 
 
 	function gameloop.draw()
-		love.graphics.draw(bgImage, 0, 0, 0, love.window.getWidth(), love.window.getHeight() / bgImage:getHeight())
+		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.draw(bgImage, 0, 0, 0, love.window.getWidth() / bgImage:getWidth(), love.window.getHeight() / bgImage:getHeight())
 		
 		camera.push()
 		
@@ -49,5 +60,9 @@ do
 		end 
 
 		camera.pop()
+
+		love.graphics.setColor(100, 100, 100, 255)
+		-- second param: y = 0 in screen space
+		love.graphics.rectangle("fill", 0, love.window.getHeight()/2 - math.floor(camera.y * camera.scale), love.window.getWidth(), love.window.getHeight())
 	end 
 end
