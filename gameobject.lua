@@ -4,7 +4,7 @@ do
 		love.graphics.draw(obj.drawable, obj.x, obj.y)
 	end
 
-	function createGameObject(drawable, x, y, type)
+	function createSprite(drawable, x, y, type)
 		return {
 			drawable = drawable,
 			x = x,

@@ -43,4 +43,9 @@ Stampfattacke/Schlag nach unten
 
 Vllt. Local Multiplayer
 
+
 Kriegschrei-Button und Kriegschrei (vllt. Special powers oder so?)
+
+Bei Fenstern nur inneren Abstand von 1 und ungerade Gebäudehöhen? (Vielleicht auch Horizontal)
+
+Gebäude fallen herunter wenn keine Tiles mehr das Gebäude mit dem Boden verbinden

@@ -10,6 +10,7 @@ ToDo
 	- Zellen
 		[x] Liste für Gebäude
 		[x] Liste für NPCs
+		[ ] Tile-Raster
 	- Building/Infrastructure Generation
 		[x] Simples Gebäude (Fenster, Wände, Türen)
 	- City Generation
