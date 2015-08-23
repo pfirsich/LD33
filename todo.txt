@@ -1,37 +1,44 @@
 ToDo
 
-- Spriter Importer
-
-- Core (Kleinscheiss)
-
-- World Generation
-	- World
-		[x] Liste von Zellen
-	- Zellen
-		[x] Liste für Gebäude
-		[x] Liste für NPCs
-		[ ] Tile-Raster
-	- Building/Infrastructure Generation
-		[x] Simples Gebäude (Fenster, Wände, Türen)
-	- City Generation
-
 - Spieler Charakter
-	- Laufen (an Gebäuden vorbei?)
-	- Auf Gebäude Klettern (Vor Gebäude und links+rechts eine Margin, in der der Spieler "Hoch" drücken kann um auf das Gebäude zu klettern (sowohl beim Laufen als auch im Sprung)
-	- Gebäude/NPCs angreifen
-	- Zwischen Ebenen wechseln per Specialmove
+	- Schlagen
+	- Animationen
+
+- Environment
+	- Gebäude nehmen Schaden (vllt. prozedural?)
+	- Gebäude fallen zusammen, wenn Layers fehlen
 
 - NPCs
 	- Soldaten
 	- Panzer
+		- Auch greifen und rumwerfen?
 	- Helikopter
+		- Greifen und rumwerfen?
 	- VIPs (Countdown+)
+	- Zivilisten
+		- Aus Fenstern schreien
+		- Suizid aus dem Fenster
+		- Greifen und Fressen
+		- Aus den Fenstern greifen und fressen
+	- Mit hoher Fallgeschwindigkeit Stampfattacke oder so?
 
 - UI
 	- Countdown
 	- "Special"-Bar
 	- Killcount/Score
 
-- Joel
-	- Klettern und Building-Collision
-	- notes.txt in todo.txt 
+- Pimp
+	- Partikeleffekte
+		- Jede Menge Blut überall. Vielleicht persistent.
+		- Fallout-Partikel mit Vortex-Term (vlllt. von Hausrändern emitted? vllt. als Player impact). Spawnen auch Wind-Sounds
+		- Player-Impact Staub-Partikel
+	- Vignette
+	- Gebäude-Schatten-Godrays (alles weiß, Häuser schwarz drüber, dann nach oben rechts fetchen)
+	- Anfangssequenz
+		- Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeiffen und einer Textbox nebem dem Closeup des monsters mit einführendem, traurigen Monolog
+	- Kriegsschrei-Button (vllt. für Combo-Boni oder special shit)
+	- Prozedurale Fell-Animationen
+
+- Sounds
+	- Windpfeiffen
+	- Player Impacts und footsteps

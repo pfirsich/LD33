@@ -11,37 +11,12 @@ Wenn man genug kaputt gemacht hat, lädt man einen coolen Layer jump auf mit dem 
 
 Inspiration bei Wrestlemoves suchen
 
-Zivilisten, die aus Fenstern gegriffen werden können, oder bei Suizidversuchen aufgefangen werden können (und gefressen)
-Bäume
-
-Blut. Überall jede Menge Blut. Vielleicht auch persistent.
-
 Verschiedene Gebäude: Polizeigebäude, Krankenhäuser, Feuerwehr (vllt. auch Feuer machen? - Man kann Helikopter wo gegen werfen), Kasernen?
 
-Stampfattacke/Schlag nach unten
-
 Vllt. Local Multiplayer (vllt. auch mit sich-gegenseitig-hauen oder so? Eher später. Menü-mäßig einfach mit Start drücken zum reinspringen und Start zum rausspringen)
-
-
-Kriegschrei-Button und Kriegschrei (vllt. Special powers oder so?)
-
-Bei Fenstern nur inneren Abstand von 1 und ungerade Gebäudehöhen? (Vielleicht auch Horizontal)
-
-Gebäude fallen herunter wenn keine Tiles mehr das Gebäude mit dem Boden verbinden
 
 Panzer schießen flotte, aber ausweichbare Projektile, die einen Umhauen und durch die Gegen werfen. Die Zeit, die man umgehauen ist, ist mindestens so hoch wie der Combo-Counter-Flush-Time-Bla und vllt. verliert man auch direkt ein bisschen Sterne
 
 Helikopter warten, bis man sich vor die Schnauze von denen bewegt und schießen dann eine größenordnung 2 Sekunden lange MG-Salve, die einen taggt und relativ immobil macht (weniger hoch springen, weniger schnell gehen). Vllt. zieht die auch direkt Sterne ab.
-
-Fallout-Partikel kriegen einen Vortex-Term. Vielleicht werden die von Haus-rändern emitted, oder einfach immer wenn der Spieler etwas impacted. Die Spawnen dann auch Wind-Sounds (passend zu den vortex-Wirbeln). 
-
-Vignette
-
-Lens-Flare? Gebäude-Schatten? God Rays? Radial Blur? Ja, Gebäude-Schatten-God-Rays (alles weiß, Häuser schwarz drüber, nach oben rechts fetchen)
-Anfangs-Sequenz ist einfach ein Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeifen und einer Textbox neben dem Closeup des Monsters. Irgendein trauriger Monolog halt.
-
-Staub hochwirbeln bei jedem Impact
-
-Prozedurale Fell-Animation?
 
 AI-Gegner strömen vermehrt aus den Häusern, wenn viel Schaden daran angerichtet wurde (-> Heli ins Hauswerf und Fliehende-Fress-Combo)
