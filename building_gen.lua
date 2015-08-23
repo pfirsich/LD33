@@ -4,7 +4,7 @@ do
 	local buildingGenerators = {}
 
 	local function createBuildingTile(img, x, y)
-		return createGameObject(img, x, y, "building")
+		return createSprite(img, x, y, "building")
 	end
 
 	buildingGenerators["simple"] = function(buildingX, width, height)
@@ -14,11 +14,20 @@ do
 		w = math.floor(width / simpleWall:getWidth())
 		h = math.floor(height / simpleWall:getHeight())
 
+		local outerMargin = 1
+		local windowWidth = math.min(math.floor(math.sqrt(w - 2 * outerMargin) * 0.8), 3)
+		local windowHeight = math.min(math.floor(math.sqrt(h - 2 * outerMargin) * 0.8), 4)
+		local numWindowsX = math.floor((w - 2 * outerMargin) / (1.5 * windowWidth)) 
+		local numWindowsY = math.floor((h - 2 * outerMargin) / (1.5 * windowHeight))
+		local innerMarginX = numWindowsX >= 1 and math.floor((w - 2 * outerMargin - windowWidth * numWindowsX) / (numWindowsX - 1)) or 0
+		local innerMarginY = numWindowsY >= 1 and math.floor((h - 2 * outerMargin - windowHeight * numWindowsY) / (numWindowsY - 1)) or 0
+
 		for y = 0, h-1 do
 			for x = 0, w-1 do
 				-- Let every other column on every other row be a window, but only inside the
 				-- outer border of the building
-				if (x > 0) and (x < (w-1)) and (y > 0) and (y < (h-1)) and ((y - 1) % 2 == 0) and ((x - 1) % 2 == 0) then
+				if (x >= outerMargin) and (x < (w - outerMargin)) and (y >= outerMargin) and (y < (h - outerMargin)) and
+					((x - outerMargin) % (windowWidth + innerMarginX) < windowWidth) and ((y - outerMargin) % (windowHeight + innerMarginY) < windowHeight) then
 					img = simpleWindow
 
 				-- Let the center cell in the bottom row be a door
@@ -30,7 +39,7 @@ do
 					img = simpleWall
 				end
 
-				table.insert(buildingObjects, createBuildingTile(img, img:getWidth() * x + buildingX, -img:getHeight() * (y + 1)))
+				table.insert(buildingObjects, createBuildingTile(img, simpleWall:getWidth() * x + buildingX, -simpleWall:getHeight() * (y + 1)))
 			end
 		end
 

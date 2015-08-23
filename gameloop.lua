@@ -15,8 +15,8 @@ do
 		
 		city.setBuildingGenerationProperties("simple", {
 			probability = 1.0,
-			minWidth = 192, maxWidth = 512,
-			minHeight = 256, maxHeight = 512 * 3
+			minWidth = 320, maxWidth = 640,
+			minHeight = 640, maxHeight = 2048
 		})
 		world.addGameObjects(city.generateNextCell(1))
 		world.addGameObjects(city.generateNextCell(1))

@@ -31,7 +31,7 @@ do
 
 		-- The result should be found in the loop, otherwise the probabilities
 		-- don't add up to 1 or there are no building properties
-		assert(false)
+		assert(false, "Building generation probabilities don't add up to 1 or no building properties set")
 	end
 
 	-- x denotes the left edge of the cell

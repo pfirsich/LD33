@@ -12,6 +12,7 @@ ToDo
 		[x] Liste für NPCs
 	- Building/Infrastructure Generation
 		[x] Simples Gebäude (Fenster, Wände, Türen)
+		[ ] 2x3 Fenster
 	- City Generation
 
 - Spieler Charakter
