@@ -6,11 +6,6 @@ require "inputs"
 do
 	gameloop = {}
 
-	local upController = watchBinaryInput(keyboardCallback("up"))
-	local downController = watchBinaryInput(keyboardCallback("down"))
-	local leftController = watchBinaryInput(keyboardCallback("left"))
-	local rightController = watchBinaryInput(keyboardCallback("right"))
-
 	function gameloop.enter()
 		
 		city.setBuildingGenerationProperties("simple", {
@@ -25,21 +20,33 @@ do
 		world.addGameObjects(city.generateNextCell(-1))
 		world.addGameObjects(city.generateNextCell(-1))
 
+		
+		-- change this later
+		--newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
+		newPlayer("Test", newGamepadController(love.joystick.getJoysticks()[1]))
+
 		camera.targetY = -400	
 	end 
 
 	function gameloop.update()
-		camera.update()
+		for i = 1, #players do 
+			players[i].update()
+		end 
 
-		if(upController().down) then camera.targetY = camera.y - 109 end
-		if(downController().down) then camera.targetY = camera.y + 100 end
-		if(leftController().down) then camera.targetX = camera.x - 100 end
-		if(rightController().down) then camera.targetX = camera.x + 100 end
+		camera.targetX = players[1].position[1] + players[1].width/2
+		camera.targetY = players[1].position[2] + players[1].height/2
+		camera.update()
 	end 
 
 	function gameloop.draw()
 		camera.push()
+		
 		world.render()
+
+		for i = 1, #players do 
+			players[i].draw()
+		end 
+
 		camera.pop()
 	end 
 end

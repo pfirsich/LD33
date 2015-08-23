@@ -1,4 +1,25 @@
 do
+	-- Controllers
+
+	function newKeyboardController(up, down, left, right, jump)
+		local ctrl = {}
+		ctrl.moveX = getFloatInputFromTwoBinaryInputs(keyboardCallback(right), keyboardCallback(left))
+		ctrl.moveY = getFloatInputFromTwoBinaryInputs(keyboardCallback(down), keyboardCallback(up))
+		ctrl.jump = watchBinaryInput(keyboardCallback(jump))
+		return ctrl 
+	end 
+
+	function newGamepadController(joystick)
+		local ctrl = {}
+		ctrl.moveX = getJoystickAxisCallback(joystick, "leftx")
+		ctrl.moveY = getJoystickAxisCallback(joystick, "lefty")
+		ctrl.jump = watchBinaryInput(joystickButtonCallback(joystick, "a"))
+		return ctrl
+	end 
+
+	----------------------------------------------------------------------------------
+	----------------------------------------------------------------------------------
+
 	local inputs = {}
 	
 	function keyboardCallback(key)
@@ -7,6 +28,20 @@ do
 	
 	function mouseButtonCallback(button)
 		return function() return love.mouse.isDown(button) end
+	end
+
+	function joystickButtonCallback(joystick, button)
+		return function() return joystick:isGamepadDown(button) end
+	end
+
+	function getFloatInputFromTwoBinaryInputs(funA_plus, funB_minus, factor)
+		if factor == nil then factor = 1.0 end
+		return function() return ((funA_plus() and 1.0 or 0.0) - (funB_minus() and 1.0 or 0.0)) * factor end
+	end
+
+	function getJoystickAxisCallback(joystick, axisID, factor)
+		if factor == nil then factor = 1.0 end
+		return function() return joystick:getGamepadAxis(axisID) * factor end
 	end
 
 	function combineCallbacks(A, B)

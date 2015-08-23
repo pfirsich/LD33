@@ -4,6 +4,7 @@ require "utility"
 require "inputs"
 require "camera"
 require "gfx"
+require "players"
 require "gameloop"
 lush = require "lush"
 
