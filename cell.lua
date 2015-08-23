@@ -24,9 +24,9 @@ do
 		end
 	end
 
-	local function pixelToTileCoordinatesFun(cell, x, y)
-		local tileX = math.floor((x - cell.x) / tileWidth)
-		local tileY = math.floor(y / tileWidth)
+	local function pixelToTileCoordinatesFun(x, y)
+		local tileX = math.floor(x / tileWidth)
+		local tileY = math.floor(y / tileHeight)
 
 		return tileX, tileY
 	end
@@ -44,8 +44,9 @@ do
 
 	local function getTileAtFun(cell, x, y)
 
-		local tileX, tileY = cell:pixelToTileCoordinates(x, y)
-
+		local tileX = math.floor(x / tileWidth)
+		local tileY = math.floor(y / tileHeight)
+	
 		if cell.tileMap[tileY] == nil then
 			return nil
 		end
@@ -54,10 +55,9 @@ do
 	end
 
 	local function renderFun(cell)
-		--print("Rendering cell at " .. cell.x)
-		for k1,v1 in ipairs(cell.tileMap) do
-			for k2,v2 in ipairs(v1) do
-				local x = ((cell.x + k2) * tileWidth)
+ 		for k1,v1 in pairs(cell.tileMap) do
+			for k2,v2 in pairs(v1) do
+				local x = k2 * tileWidth
 				local y = k1 * tileHeight
 				v2:render(x, y)
 			end
@@ -74,7 +74,6 @@ do
 			addGameObjects = addGameObjectsFun,
 			render = renderFun,
 			getTileAt = getTileAtFun,
-			pixelToTileCoordinates = pixelToTileCoordinatesFun,
 			setTileAt = setTileAtFun
 		}
 	end
