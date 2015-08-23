@@ -37,7 +37,6 @@ do
 
 			local targetVelX = maxVelX * player.controller.moveX()
 			if math.abs(targetVelX/maxVelX) < 0.2 then targetVelX = 0 end
-			print(player.controller.moveX(), targetVelX)
 			player.velocity[1] = player.velocity[1] + sign(targetVelX - player.velocity[1]) * accel * simulationDt
 			if math.abs(targetVelX - player.velocity[1]) < accel * simulationDt then player.velocity[1] = targetVelX end
 

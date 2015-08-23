@@ -1,14 +1,12 @@
 
 do
-	local function renderFun(obj)
-		love.graphics.draw(obj.drawable, obj.x, obj.y)
+	local function renderFun(obj, x, y)
+		love.graphics.draw(obj.drawable, x, y)
 	end
 
-	function createSprite(drawable, x, y, type)
+	function createSprite(drawable, type)
 		return {
 			drawable = drawable,
-			x = x,
-			y = y,
 			type = type,
 			render = renderFun
 		}
