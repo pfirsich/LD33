@@ -47,12 +47,13 @@ do
 			local w = love.math.random(generationProperties.minWidth, generationProperties.maxWidth)
 			local h = love.math.random(generationProperties.minHeight, generationProperties.maxHeight)
 			local tileSet = buildingTileSets[love.math.random(#buildingTileSets)]
-			generateBuilding(buildingType, tileSet, buildingX, w, h)
 
 			-- Break prematurely if new building crosses over cell boundary
 			if (buildingX + w) > (x + cellWidth) then
 				break
 			end
+
+			generateBuilding(buildingType, tileSet, buildingX, w, h)
 
 			-- Advance to the position next to the new building and insert 
 			-- randomly chosen amount of space next to it
