@@ -6,6 +6,7 @@ do
 		ctrl.moveX = getFloatInputFromTwoBinaryInputs(keyboardCallback(right), keyboardCallback(left))
 		ctrl.moveY = getFloatInputFromTwoBinaryInputs(keyboardCallback(down), keyboardCallback(up))
 		ctrl.jump = watchBinaryInput(keyboardCallback(jump))
+		ctrl.grab = watchBinaryInput(keyboardCallback(grab))
 		return ctrl 
 	end 
 
@@ -14,6 +15,7 @@ do
 		ctrl.moveX = getJoystickAxisCallback(joystick, "leftx")
 		ctrl.moveY = getJoystickAxisCallback(joystick, "lefty")
 		ctrl.jump = watchBinaryInput(joystickButtonCallback(joystick, "a"))
+		ctrl.grab = watchBinaryInput(joystickButtonCallback(joystick, "x"))
 		return ctrl
 	end 
 
