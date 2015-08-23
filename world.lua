@@ -39,6 +39,12 @@ do
 		return cell:getTileAt(x, y)
 	end
 
+	function world.cellExists(x, offset)
+		local idx = math.floor(x / cellWidth)
+		local cell = world.cells[idx + offset]
+		return cell ~= nil
+	end
+
 	function world.getCell(x)
 		local idx = math.floor(x / cellWidth)
 		local cell = world.cells[idx]
