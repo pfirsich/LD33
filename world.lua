@@ -22,12 +22,22 @@ do
 		end
 	end
 
-	-- x can be any x-coordinate in world space
+	function world.setTileAt(x, y, obj)
+		local cell = world.getCell(x)
+		cell:setTileAt(x, y, obj)		
+	end
+
+	-- 
+	function world.getTileAt(x, y)
+		local cell = world.getCell(x)
+		return cell:getTileAt(x, y)
+	end
+
 	function world.getCell(x)
 		local idx = math.floor(x / cellWidth)
 		local cell = world.cells[idx]
 		if cell == nil then
-			cell = createCell(idx)
+			cell = createCell(idx * cellWidth)
 			world.cells[idx] = cell
 		end
 

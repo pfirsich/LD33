@@ -4,16 +4,12 @@ require "utility"
 do
 	local buildingGenerators = {}
 
-	local function createBuildingTile(img, x, y)
-		return createSprite(img, x, y, "building")
-	end
-
 	buildingGenerators["simple"] = function(buildingX, width, height)
 		local buildingObjects = {}
 
 		-- Allowed size in tiles
-		w = math.floor(width / simpleWall:getWidth())
-		h = math.floor(height / simpleWall:getHeight())
+		w = width
+		h = height
 
 		local outerMargin = 1
 
@@ -60,7 +56,7 @@ do
 					img = simpleWall
 				end
 
-				table.insert(buildingObjects, createBuildingTile(img, simpleWall:getWidth() * x + buildingX, -simpleWall:getHeight() * (y + 1)))
+				world.setTileAt(buildingX + x, -(y + 1), createSprite(img, "building"))
 			end
 		end
 

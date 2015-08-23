@@ -10,9 +10,10 @@ do
 		
 		city.setBuildingGenerationProperties("simple", {
 			probability = 1.0,
-			minWidth = 320, maxWidth = 640,
-			minHeight = 640, maxHeight = 2048
+			minWidth = 5, maxWidth = 10,
+			minHeight = 8, maxHeight = 15
 		})
+
 		world.addGameObjects(city.generateNextCell(1))
 		world.addGameObjects(city.generateNextCell(1))
 		world.addGameObjects(city.generateNextCell(1))
@@ -20,7 +21,6 @@ do
 		world.addGameObjects(city.generateNextCell(-1))
 		world.addGameObjects(city.generateNextCell(-1))
 
-		
 		-- change this later
 		--newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
 		if love.joystick.getJoystickCount() > 0 then 

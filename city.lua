@@ -1,11 +1,11 @@
 require "building_gen"
 
 do
-	local avgDistance = 352
+	local avgDistance = 5
 
 	-- Below this threshold in distance between buildings the distance is reduced to 0
 	-- and the buildings are snapped together
-	local lowDistanceThreshold = 64
+	local lowDistanceThreshold = 0
 
 	city = { 
 		leftBorder = 0, 
@@ -34,7 +34,7 @@ do
 		assert(false, "Building generation probabilities don't add up to 1 or no building properties set")
 	end
 
-	-- x denotes the left edge of the cell
+	-- x denotes the first tile coordinate of the cell
 	function city.generateCellBuildings(x)	
 
 		local generatedBuildings = {}
@@ -60,7 +60,7 @@ do
 
 			-- Advance to the position next to the new building and insert 
 			-- randomly chosen amount of space next to it
-			local space = math.log(1 - love.math.random()) * (-avgDistance)
+			local space = math.floor(math.log(1 - love.math.random()) * (-avgDistance))
 			if(space < lowDistanceThreshold) then space = 0 end
 			buildingX = buildingX + w + space
 		end
