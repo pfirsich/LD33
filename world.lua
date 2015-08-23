@@ -29,7 +29,7 @@ do
 
 	-- 
 	function world.getTileAt(x, y)
-		local cell = world.getCell(math.floor(x / tileWidth))
+		local cell = world.getCell(x)
 		return cell:getTileAt(x, y)
 	end
 

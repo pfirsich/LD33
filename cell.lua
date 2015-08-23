@@ -24,7 +24,7 @@ do
 		end
 	end
 
-	local function pixelToTileCoordinatesFun(x, y)
+	function pixelToTileCoordinatesFun(x, y)
 		local tileX = math.floor(x / tileWidth)
 		local tileY = math.floor(y / tileHeight)
 
@@ -44,14 +44,11 @@ do
 
 	local function getTileAtFun(cell, x, y)
 
-		local tileX = math.floor(x / tileWidth)
-		local tileY = math.floor(y / tileHeight)
-	
-		if cell.tileMap[tileY] == nil then
+		if cell.tileMap[y] == nil then
 			return nil
 		end
 
-		return cell.tileMap[tileY][tileX]
+		return cell.tileMap[y][x]
 	end
 
 	local function renderFun(cell)
