@@ -1,7 +1,7 @@
 do
 	-- Controllers
 
-	function newKeyboardController(up, down, left, right, jump)
+	function newKeyboardController(up, down, left, right, jump, grab)
 		local ctrl = {}
 		ctrl.moveX = getFloatInputFromTwoBinaryInputs(keyboardCallback(right), keyboardCallback(left))
 		ctrl.moveY = getFloatInputFromTwoBinaryInputs(keyboardCallback(down), keyboardCallback(up))

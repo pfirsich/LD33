@@ -3,27 +3,6 @@ do
 	tileHeight = 64
 	cellWidth = 60
 
-	local function addGameObjectFun(cell, obj)
-		
-		local tileX, tileY = cell:pixelToTileCoordinates(obj.x, obj.y)
-
-		--print("Adding tile at " .. tileX,tileY)
-
-		row = cell.tileMap[tileY]
-		if(row == nil) then
-			cell.tileMap[tileY] = {}
-			row = cell.tileMap[tileY]
-		end
-
-		row[tileX] = obj
-	end
-
-	local function addGameObjectsFun(cell, objs)
-		for k,v in pairs(objs) do
-			cell:addGameObject(v)
-		end
-	end
-
 	local function setTileAtFun(cell, x, y, obj)
 
 		row = cell.tileMap[y]
@@ -60,8 +39,6 @@ do
 		{
 			x = posX,
 			tileMap = {},
-			addGameObject = addGameObjectFun,
-			addGameObjects = addGameObjectsFun,
 			render = renderFun,
 			getTileAt = getTileAtFun,
 			setTileAt = setTileAtFun
