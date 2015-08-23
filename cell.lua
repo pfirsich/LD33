@@ -1,7 +1,7 @@
 do
 	tileWidth = 64
 	tileHeight = 64
-	cellWidth = 30
+	cellWidth = 60
 
 	local function addGameObjectFun(cell, obj)
 		

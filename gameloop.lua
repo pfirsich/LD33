@@ -14,8 +14,7 @@ do
 			minHeight = 8, maxHeight = 15
 		})
 
-		world.addGameObjects(city.generateNextCell(1))
-		world.addGameObjects(city.generateNextCell(1))
+		city.generateNextCell(1)
 
 		-- change this later
 		--newPlayer("Test", newKeyboardController("up", "down", "left", "right", "a"))
@@ -32,6 +31,14 @@ do
 		for i = 1, #players do 
 			players[i].update()
 		end 
+
+		-- Automatically generate new cells if there is no cell yet next to the current player's cell
+		local playerTilePosX = world.pixelToTileCoordinates(players[1].position[1], 0)
+		for i = -1, 1, 2 do
+			if not world.cellExists(playerTilePosX, i) then
+				city.generateNextCell(i)
+			end
+		end
 
 		local velocityCameraTranslationX = 0.6
 		local velocityCameraTranslationYPositive = 0.6
