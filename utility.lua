@@ -8,6 +8,15 @@ function filter(list, func)
 	return ret
 end
 
+function shuffleList(tbl)
+	local result = copyTable(tbl)
+	for i = 1, #tbl do
+		local j = love.math.random(1, #tbl)
+		result[i], result[j] = result[j], result[i]
+	end
+	return result
+end
+
 function setResolution(w, h, flags) -- this is encapsulated, so if canvases are used later, they can be updated here!
 	if love.window.setMode(w, h, flags) then
         reinitGFX()

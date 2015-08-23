@@ -1,4 +1,5 @@
 require "gameobject"
+require "utility"
 
 do
 	local buildingGenerators = {}
@@ -15,12 +16,32 @@ do
 		h = math.floor(height / simpleWall:getHeight())
 
 		local outerMargin = 1
-		local windowWidth = math.min(math.floor(math.sqrt(w - 2 * outerMargin) * 0.8), 3)
-		local windowHeight = math.min(math.floor(math.sqrt(h - 2 * outerMargin) * 0.8), 4)
-		local numWindowsX = math.floor((w - 2 * outerMargin) / (1.5 * windowWidth)) 
-		local numWindowsY = math.floor((h - 2 * outerMargin) / (1.5 * windowHeight))
-		local innerMarginX = numWindowsX >= 1 and math.floor((w - 2 * outerMargin - windowWidth * numWindowsX) / (numWindowsX - 1)) or 0
-		local innerMarginY = numWindowsY >= 1 and math.floor((h - 2 * outerMargin - windowHeight * numWindowsY) / (numWindowsY - 1)) or 0
+
+		local verticalWindowSizes = shuffleList({1, 2, 3})
+		local horizontalWindowSizes = shuffleList({1, 2, 3})
+
+		local innerMarginX = (w - outerMargin * 2) % 2 == 0 and 2 or 1
+		local innerMarginY = (h - outerMargin * 2) % 2 == 0 and 2 or 1
+		
+		local windowWidth = 0
+		local windowHeight = 0
+
+		-- Find a fitting window size
+		for k,v in ipairs(horizontalWindowSizes) do
+			local n = ((w - outerMargin * 2) + innerMarginX) / (v + innerMarginX)
+			if math.abs(n - math.floor(n + 0.5)) < 1e-3 then
+				windowWidth = v
+			end
+		end
+		for k,v in ipairs(verticalWindowSizes) do
+			local n = ((h - outerMargin * 2) + innerMarginY) / (v + innerMarginY)
+			if math.abs(n - math.floor(n + 0.5)) < 1e-3 then
+				windowHeight = v
+			end
+		end
+
+		assert(windowWidth > 0, "w=" .. (w - 2) .. ", innerMarginX=" .. innerMarginX)
+		assert(windowWidth > 0, "h=" .. (h - 2) .. ", innerMarginY=" .. innerMarginY)
 
 		for y = 0, h-1 do
 			for x = 0, w-1 do

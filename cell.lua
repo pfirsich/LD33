@@ -16,6 +16,10 @@ do
 	end
 
 	local function addGameObjectsFun(cell, objs)
+		local minX = 0 
+		local maxX = 0
+		local minY = 0
+		local maxY = 0
 		for k,v in pairs(objs) do
 			cell:addGameObject(v)
 		end

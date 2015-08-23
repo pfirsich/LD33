@@ -40,3 +40,7 @@ Verschiedene Gebäude: Polizeigebäude, Krankenhäuser, Feuerwehr (vllt. auch Feuer
 Stampfattacke/Schlag nach unten
 
 Vllt. Local Multiplayer
+
+Bei Fenstern nur inneren Abstand von 1 und ungerade Gebäudehöhen? (Vielleicht auch Horizontal)
+
+Gebäude fallen herunter wenn keine Tiles mehr das Gebäude mit dem Boden verbinden
