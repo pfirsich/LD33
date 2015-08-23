@@ -27,7 +27,13 @@ do
 		cell:setTileAt(x, y, obj)		
 	end
 
-	-- 
+	function world.pixelToTileCoordinates(x, y)
+		local tileX = math.floor(x / tileWidth)
+		local tileY = math.floor(y / tileHeight)
+
+		return tileX, tileY
+	end
+
 	function world.getTileAt(x, y)
 		local cell = world.getCell(x)
 		return cell:getTileAt(x, y)

@@ -6,7 +6,7 @@ do
 
 	buildingGenerators["simple"] = function(buildingX, tileSet, width, height)
 
-		baseShade = love.math.random(150, 240)
+		baseShade = love.math.random(180, 255)
 
 		local img = nil
 		local type = nil
@@ -52,7 +52,7 @@ do
 					end
 				end
 
-				world.setTileAt(buildingX + x, y - 1, createSprite(img, type, baseShade + love.math.random(0, 10)))
+				world.setTileAt(buildingX + x, y - 1, createSprite(img, type, baseShade - love.math.random(0, 10)))
 			end
 		end
 	end

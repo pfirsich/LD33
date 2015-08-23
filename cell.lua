@@ -24,13 +24,6 @@ do
 		end
 	end
 
-	function pixelToTileCoordinatesFun(x, y)
-		local tileX = math.floor(x / tileWidth)
-		local tileY = math.floor(y / tileHeight)
-
-		return tileX, tileY
-	end
-
 	local function setTileAtFun(cell, x, y, obj)
 
 		row = cell.tileMap[y]

@@ -89,6 +89,13 @@ function aabbCollision(A, B) -- box = {{topleftx, toplefty}, {sizex, sizey}}
 	end
 end
 
+function inSet(v, set)
+	for i = 1, #set do 
+		if set[i] == v then return true end 
+	end 
+	return false
+end 
+
 function worldToScreen(x, y)
     x = x - camera.x
     y = y - camera.y
