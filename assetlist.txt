@@ -1,0 +1,25 @@
+Fenster-Tiles (3 versch.) (mit Rändern -> 9 Stück) (welche mit Rand, welche ohne)
+Gebäude-Tiles (3 versch.) (mit Rändern -> 9 Stück)
+Tür-Tiles (3 versch.)
+Ein Tilebares Bild für die Straße
+
+Ein Monster (Alle Limbs, die man so braucht)
+    Lauf-Animation
+    Fall-Animation
+    Schlag-Animation
+    Stampfattacke-Animation
+    Kletter-Animation
+    Schrei-Animation
+    
+    siehe Kroganer (Mass Effect)/Street Sharks für Inspiration bzgl. Proportionen, allerdings befellt für Werwolf-Assoziationen
+
+Panzer - Ketten-Animation? / Lauf separat
+NPCs (sehr kantig, bewusst anders als das Monster und eher simpel/abstrakt gestaltet, vielleicht mit der Möglichkeit die Farben leicht zu ändern). Vielleicht 1-2 Frame-Animationen (strips) oder tatsächlich einfach ein kleines Männchen mit Limbs
+    verschieden bunte Menschen
+    Soldaten
+    vllt. eine Aus-Dem-Fenster-Schrei-Animation
+    und Fall-Animation
+Helikopter + drei Frames für die Rotoren
+
+Hintergrund-Stadt-Bilder zum Parallaxen
+    vielleicht nur so graue umrissen mit ein bisschen blur in mehreren ebenen

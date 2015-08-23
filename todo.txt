@@ -32,3 +32,6 @@ ToDo
 	- "Special"-Bar
 	- Killcount/Score
 
+- Joel
+	- Klettern und Building-Collision
+	- notes.txt in todo.txt 

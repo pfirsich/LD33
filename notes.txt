@@ -1,22 +1,3 @@
-Herzblatt
-Werwolf
-
-JEDES ANDERE SPIEL EVER (mit monstern)
-Street Fighter
-
-Monster als Freak des Dorfes
-Missverstandenes Monster - man muss Freunde machen?
-
-You are the energy drink
-
-Van Helsing-mäßiges Spiel, wo man als Vampir einfach alle umbringt
-
-Edward mit den Scherenhänden
-
-Jobbörse
-
-Godzilla, King Kong, Riesenracoon, Ghostbusters Marshmallow Man, Cthulu, Fliegendes Spaghettimonster
-
 Protoype-Gameplay, man ist ein Viech, das immer Leute umbringen muss um nicht zu sterben!
 
 Military assisted suicide als Monster. Man will sich selbst aus dem Elend holen, indem man "STRESS" macht und GTA-mäßig Sterne sammelt um die Regierung die ganze Stadt nuked.
@@ -25,8 +6,6 @@ Vielleicht will man auch mit nem großen Knall gehen und soviel kaputt machen wie
 Man muss ne kritische Menge Zerstörung anrichten bis die Regierung die Vorbereitung der Bombe initiiert und gleichzeitig die Evakuierung der Stadt. Ab dann läuft ein Timer bis dahin man genug kaputt gemacht haben muss -> ABER ist behindert, weil man nichts kaputt machen will.
 Combo-System
 Krass zerstörbare Environments mit sicker Parcour action
-
-Wie begrenzt man das Level? Mit Barrikaden? Eventuell isses endlos?
 
 Wenn man genug kaputt gemacht hat, lädt man einen coolen Layer jump auf mit dem man einen Sprung in eine tiefere parallax-Ebene machen kann. Vielleicht mehr Special moves mit der selben bar?
 
@@ -41,7 +20,7 @@ Verschiedene Gebäude: Polizeigebäude, Krankenhäuser, Feuerwehr (vllt. auch Feuer
 
 Stampfattacke/Schlag nach unten
 
-Vllt. Local Multiplayer
+Vllt. Local Multiplayer (vllt. auch mit sich-gegenseitig-hauen oder so? Eher später. Menü-mäßig einfach mit Start drücken zum reinspringen und Start zum rausspringen)
 
 
 Kriegschrei-Button und Kriegschrei (vllt. Special powers oder so?)
@@ -49,3 +28,20 @@ Kriegschrei-Button und Kriegschrei (vllt. Special powers oder so?)
 Bei Fenstern nur inneren Abstand von 1 und ungerade Gebäudehöhen? (Vielleicht auch Horizontal)
 
 Gebäude fallen herunter wenn keine Tiles mehr das Gebäude mit dem Boden verbinden
+
+Panzer schießen flotte, aber ausweichbare Projektile, die einen Umhauen und durch die Gegen werfen. Die Zeit, die man umgehauen ist, ist mindestens so hoch wie der Combo-Counter-Flush-Time-Bla und vllt. verliert man auch direkt ein bisschen Sterne
+
+Helikopter warten, bis man sich vor die Schnauze von denen bewegt und schießen dann eine größenordnung 2 Sekunden lange MG-Salve, die einen taggt und relativ immobil macht (weniger hoch springen, weniger schnell gehen). Vllt. zieht die auch direkt Sterne ab.
+
+Fallout-Partikel kriegen einen Vortex-Term. Vielleicht werden die von Haus-rändern emitted, oder einfach immer wenn der Spieler etwas impacted. Die Spawnen dann auch Wind-Sounds (passend zu den vortex-Wirbeln). 
+
+Vignette
+
+Lens-Flare? Gebäude-Schatten? God Rays? Radial Blur? Ja, Gebäude-Schatten-God-Rays (alles weiß, Häuser schwarz drüber, nach oben rechts fetchen)
+Anfangs-Sequenz ist einfach ein Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeifen und einer Textbox neben dem Closeup des Monsters. Irgendein trauriger Monolog halt.
+
+Staub hochwirbeln bei jedem Impact
+
+Prozedurale Fell-Animation?
+
+AI-Gegner strömen vermehrt aus den Häusern, wenn viel Schaden daran angerichtet wurde (-> Heli ins Hauswerf und Fliehende-Fress-Combo)
