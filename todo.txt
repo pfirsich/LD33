@@ -1,7 +1,6 @@
 ToDo
 
 - Joel:
-	- Straßenbild
 	- Parallax-Hintergrund
 	- Punch -> Box spawnen und tiles checken und damagen + Animation
 	- NPCs/Soldaten

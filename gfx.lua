@@ -1,9 +1,6 @@
 function initGFX()
-	simpleWall = love.graphics.newImage("gfx/simplewall.png")
-	simpleWindow = love.graphics.newImage("gfx/simplewindow.png")
-	simpleDoor = love.graphics.newImage("gfx/simpledoor.png")
-
 	bgImage = love.graphics.newImage("gfx/bg.png")
+	streetTile = love.graphics.newImage("gfx/street_tile.png")
 
 	tileDamageShader = love.graphics.newShader([[
 	uniform Image damageMap;

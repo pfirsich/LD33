@@ -63,14 +63,13 @@ do
 		love.graphics.draw(bgImage, 0, 0, 0, love.window.getWidth() / bgImage:getWidth(), love.window.getHeight() / bgImage:getHeight())
 		
 		camera.push()
+		for i = 1, math.ceil(love.window.getWidth()/camera.scale / streetTile:getWidth()) + 1 do -- dont know why i need the +1 
+			local leftBorderInWorld = -love.window.getWidth()/2/camera.scale + camera.x -- (screen) x = 0
+			love.graphics.draw(streetTile, math.floor(leftBorderInWorld / streetTile:getWidth() + i - 1) * streetTile:getWidth(), - 15)
+		end
+
 		world.render()
-		camera.pop()
 
-		love.graphics.setColor(100, 100, 100, 255)
-		-- second param: y = 0 in screen space
-		love.graphics.rectangle("fill", 0, love.window.getHeight()/2 - math.floor(camera.y * camera.scale), love.window.getWidth(), love.window.getHeight())
-
-		camera.push()
 		for i = 1, #players do 
 			players[i].draw()
 		end 
