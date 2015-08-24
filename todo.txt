@@ -1,7 +1,6 @@
 ToDo
 
 - Joel:
-	- Parallax-Hintergrund
 	- Punch -> Box spawnen und tiles checken und damagen + Animation
 	- NPCs/Soldaten
 		- Soldaten laufen rum, versuchen Abstand zu halten und bewegen sich rum
@@ -11,6 +10,12 @@ ToDo
 		- NPCs greifen
 			- nochmal greifen = fressen
 		- NPCs punchen
+
+- Seek input:
+	- Parallax-Background
+		- Colors?
+		- Images? Damaged?
+		- Backdrop-Gradient okay? Apocalyptic?
 
 - Spieler Charakter
 	- Schlagen
@@ -43,7 +48,6 @@ ToDo
 		- Jede Menge Blut überall. Vielleicht persistent.
 		- Fallout-Partikel mit Vortex-Term (vlllt. von Hausrändern emitted? vllt. als Player impact). Spawnen auch Wind-Sounds
 		- Player-Impact Staub-Partikel
-	- Vignette
 	- Gebäude-Schatten-Godrays (alles weiß, Häuser schwarz drüber, dann nach oben rechts fetchen)
 	- Anfangssequenz
 		- Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeiffen und einer Textbox nebem dem Closeup des monsters mit einführendem, traurigen Monolog

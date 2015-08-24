@@ -59,12 +59,34 @@ do
 	end 
 
 	function gameloop.draw()
+		love.graphics.setShader()
+		love.graphics.setCanvas(postProcessCanvas)
 		love.graphics.setColor(255, 255, 255, 255)
 		love.graphics.draw(bgImage, 0, 0, 0, love.window.getWidth() / bgImage:getWidth(), love.window.getHeight() / bgImage:getHeight())
-		
+
 		camera.push()
+		local leftBorderInWorld = -love.window.getWidth()/2/camera.scale + camera.x -- (screen) x = 0
+		
+		for layer = 1, 3 do 
+			local invLayer = 4 - layer
+			local c = 255 * (invLayer * 0.2 + 0.2)
+			love.graphics.setColor(c, c, c - invLayer*20, 255)
+
+			local parallaxX = 0.0 --camera.x * (0.0 + layer*0.1)
+			local scale = 0.8 / invLayer
+			local scalex, scaley = scale * 0.5, scale*invLayer
+			local imgW = parallaxBackgrounds[1]:getWidth() * scalex
+			
+			local startI = math.floor((leftBorderInWorld - parallaxX) / imgW)
+			for i = startI, startI + math.ceil(love.window.getWidth() / (imgW * camera.scale)) + 1 do
+				local img = parallaxBackgrounds[cheapNoise(i + layer * 10) % #parallaxBackgrounds + 1]
+				local x, y = i*imgW + parallaxX, 0 -- -(invLayer-1)*80
+				love.graphics.draw(img, x, y - img:getHeight()*scaley, 0, scalex, scaley)
+			end
+		end 
+		
+		love.graphics.setColor(200, 200, 190, 255)
 		for i = 1, math.ceil(love.window.getWidth()/camera.scale / streetTile:getWidth()) + 1 do -- dont know why i need the +1 
-			local leftBorderInWorld = -love.window.getWidth()/2/camera.scale + camera.x -- (screen) x = 0
 			love.graphics.draw(streetTile, math.floor(leftBorderInWorld / streetTile:getWidth() + i - 1) * streetTile:getWidth(), - 15)
 		end
 
@@ -74,5 +96,11 @@ do
 			players[i].draw()
 		end 
 		camera.pop()
+
+		love.graphics.setShader(postProcess)
+		love.graphics.setCanvas()
+		postProcess:send("noiseMap", filmGrainImage)
+		postProcess:send("noiseOffset", {love.math.random(), love.math.random()})
+		love.graphics.draw(postProcessCanvas)
 	end 
 end

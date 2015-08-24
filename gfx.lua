@@ -19,6 +19,45 @@ function initGFX()
 		print(damageMaps[i])
 	end
 
+	parallaxBackgrounds = {}
+	for i = 1, 3 do 
+		parallaxBackgrounds[i] = love.graphics.newImage("gfx/parallax_bg" .. tostring(i) .. "_dmg.png")
+	end 
+
+	filmGrainScale = 2.0
+    local grainData = love.image.newImageData(love.window.getWidth()/filmGrainScale, love.window.getHeight()/filmGrainScale)
+    for y = 0, love.window.getHeight()/filmGrainScale - 1 do
+        for x = 0, love.window.getWidth()/filmGrainScale - 1 do
+            local col = love.math.random(1, 255)
+            grainData:setPixel(x, y, col, col, col, 255)
+        end
+    end
+    filmGrainImage = love.graphics.newImage(grainData)
+    filmGrainImage:setWrap("repeat", "repeat")
+
+    postProcess = love.graphics.newShader([[
+	uniform Image noiseMap;
+    uniform vec2 noiseOffset;
+
+    const float filmGrainOpacity = 0.08;
+
+    const float vignetteRadius = 0.8;
+    const float vignetteSoftness = 0.4;
+    const float vignetteOpacity = 1.0;
+
+
+    vec4 effect(vec4 color, Image texture, vec2 textureCoords, vec2 screen_coords) {
+        vec3 col = mix(Texel(noiseMap, textureCoords + noiseOffset).rgb, Texel(texture, textureCoords).rgb, vec3(1.0 - filmGrainOpacity));
+        
+        float centerDist = length(textureCoords - vec2(0.5));
+        float vignette = smoothstep(vignetteRadius, vignetteRadius - vignetteSoftness, centerDist);
+
+        return vec4(mix(col, col * vignette, vignetteOpacity), 1.0);
+    }
+    ]])
+
+    postProcessCanvas = love.graphics.newCanvas()
+
 	buildingTileSets = {
 
 		{

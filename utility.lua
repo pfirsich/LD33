@@ -126,3 +126,16 @@ end
 function randf(min, max)
 	return love.math.random() * (max - min) + min
 end
+
+do 
+	-- a pseudorandom function cheapNoise: Z -> [0,10000] u N
+	local pool = {}
+	function cheapNoise(x)
+		if #pool == 0 then 
+			for i = 1, 100 do pool[i] = love.math.random(0, 10000) end 
+		end 
+
+		local x = x % #pool + 1
+		return pool[x > 0 and x or #pool - x + 1]
+	end
+end
