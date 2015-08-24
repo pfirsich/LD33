@@ -7,7 +7,6 @@ do
 	gameloop = {}
 
 	function gameloop.enter()
-		
 		city.setBuildingGenerationProperties("simple", {
 			probability = 1.0,
 			minWidth = 5, maxWidth = 10,
@@ -72,7 +71,8 @@ do
 			local c = 255 * (invLayer * 0.2 + 0.2)
 			love.graphics.setColor(c, c, c - invLayer*20, 255)
 
-			local parallaxX = 0.0 --camera.x * (0.0 + layer*0.1)
+			local parallaxX = camera.x * (0.4 + invLayer*0.15)
+			local parallaxY = 0.0 -- camera.y * (0.2 + (3-layer)*0.1)
 			local scale = 0.8 / invLayer
 			local scalex, scaley = scale * 0.5, scale*invLayer
 			local imgW = parallaxBackgrounds[1]:getWidth() * scalex
@@ -80,7 +80,7 @@ do
 			local startI = math.floor((leftBorderInWorld - parallaxX) / imgW)
 			for i = startI, startI + math.ceil(love.window.getWidth() / (imgW * camera.scale)) + 1 do
 				local img = parallaxBackgrounds[cheapNoise(i + layer * 10) % #parallaxBackgrounds + 1]
-				local x, y = i*imgW + parallaxX, 0 -- -(invLayer-1)*80
+				local x, y = i*imgW + parallaxX, parallaxY -- -(invLayer-1)*80
 				love.graphics.draw(img, x, y - img:getHeight()*scaley, 0, scalex, scaley)
 			end
 		end 
@@ -90,17 +90,29 @@ do
 			love.graphics.draw(streetTile, math.floor(leftBorderInWorld / streetTile:getWidth() + i - 1) * streetTile:getWidth(), - 15)
 		end
 
+		love.graphics.setShader(tileDamageShader)
 		world.render()
+		love.graphics.setShader()
 
 		for i = 1, #players do 
 			players[i].draw()
 		end 
 		camera.pop()
 
+		love.graphics.setCanvas(godRayCanvas)
+		godRayCanvas:clear(255, 255, 255, 255)
+		love.graphics.setShader(singleColorShader)
+		singleColorShader:send("uColor", {0, 0, 0, 255})
+		camera.push()
+		world.render()
+		camera.pop()
+		
+		love.graphics.setColor(255, 255, 255, 255)
 		love.graphics.setShader(postProcess)
 		love.graphics.setCanvas()
 		postProcess:send("noiseMap", filmGrainImage)
 		postProcess:send("noiseOffset", {love.math.random(), love.math.random()})
+		postProcess:send("godrayMap", godRayCanvas)
 		love.graphics.draw(postProcessCanvas)
 	end 
 end

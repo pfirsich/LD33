@@ -12,17 +12,14 @@ ToDo
 		- NPCs punchen
 
 - Seek input:
-	- Parallax-Background
-		- Colors?
-		- Images? Damaged?
-		- Backdrop-Gradient okay? Apocalyptic?
+	- Lighting?
 
 - Spieler Charakter
 	- Schlagen
 
 - Environment
 	- Gebäude nehmen Schaden (vllt. prozedural?)
-	- Gebäude fallen zusammen, wenn Layers fehlen
+	- Gebäude fallen zusammen, wenn Layers fehlen -> Ne, zu stressig, stattdessen bleiben die einfach stehen und gehen nie ganz kaputt.
 
 - NPCs
 	- Soldaten
@@ -49,10 +46,11 @@ ToDo
 		- Fallout-Partikel mit Vortex-Term (vlllt. von Hausrändern emitted? vllt. als Player impact). Spawnen auch Wind-Sounds
 		- Player-Impact Staub-Partikel
 	- Gebäude-Schatten-Godrays (alles weiß, Häuser schwarz drüber, dann nach oben rechts fetchen)
+		- Alles ist doch viel dunkler und weniger beleuchtet. Da ist kein Platz dafür.
 	- Anfangssequenz
 		- Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeiffen und einer Textbox nebem dem Closeup des monsters mit einführendem, traurigen Monolog
 	- Kriegsschrei-Button (vllt. für Combo-Boni oder special shit)
-	- Prozedurale Fell-Animationen
+	- Prozedurale Fell-Animationen -> Ne, das Monster sieht einfach so dark aus. Als wäre es aus Dunkelheit gemacht :D ist fast noch geiler.
 
 - Sounds
 	- Windpfeiffen

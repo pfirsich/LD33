@@ -21,7 +21,7 @@ function initGFX()
 
 	parallaxBackgrounds = {}
 	for i = 1, 3 do 
-		parallaxBackgrounds[i] = love.graphics.newImage("gfx/parallax_bg" .. tostring(i) .. "_dmg.png")
+		parallaxBackgrounds[i] = love.graphics.newImage("gfx/parallax_bg" .. tostring(i) .. ".png")
 	end 
 
 	filmGrainScale = 2.0
@@ -39,6 +39,10 @@ function initGFX()
 	uniform Image noiseMap;
     uniform vec2 noiseOffset;
 
+    uniform Image godrayMap;
+    const int samples = 13;
+    const float weights[13] = float[13](0.004571, 0.00723, 0.010989, 0.016048, 0.022521, 0.03037, 0.039354, 0.049003, 0.058632, 0.067411, 0.074476, 0.079066, 0.080657);
+
     const float filmGrainOpacity = 0.08;
 
     const float vignetteRadius = 0.8;
@@ -52,11 +56,26 @@ function initGFX()
         float centerDist = length(textureCoords - vec2(0.5));
         float vignette = smoothstep(vignetteRadius, vignetteRadius - vignetteSoftness, centerDist);
 
+        float brightness = 1.0;
+        for(int i = 0; i < samples; ++i) {
+    		brightness += Texel(godrayMap, textureCoords).r * weights[samples-i-1];
+    		textureCoords += vec2(1.0, -1.0) * 0.005;
+    	}
+    	col *= min(1.5, brightness * brightness);
+
         return vec4(mix(col, col * vignette, vignetteOpacity), 1.0);
     }
     ]])
 
+	singleColorShader = love.graphics.newShader([[
+		uniform vec4 uColor;
+		vec4 effect(vec4 color, Image texture, vec2 textureCoords, vec2 screen_coords) {
+			return uColor;
+		}
+	]])
+
     postProcessCanvas = love.graphics.newCanvas()
+    godRayCanvas = love.graphics.newCanvas()
 
 	buildingTileSets = {
 

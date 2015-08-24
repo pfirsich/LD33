@@ -1,12 +1,12 @@
 
 do
 	local function renderFun(obj, x, y)
-		love.graphics.getShader():send("damageMap", obj.damageMap)
-		love.graphics.getShader():send("damage", obj.damage)
+		tileDamageShader:send("damageMap", obj.damageMap)
+		tileDamageShader:send("damage", obj.damage)
 
-		love.graphics.setColor(obj.shade, obj.shade, obj.shade)
+		love.graphics.setColor(obj.shade, obj.shade, obj.shade, 255)
 		love.graphics.draw(obj.drawable, x, y, 0, tileWidth / obj.drawable:getWidth(), tileHeight / obj.drawable:getHeight())
-		love.graphics.setColor(255, 255, 255)
+		love.graphics.setColor(255, 255, 255, 255)
 	end
 
 	function createSprite(drawable, type, shade)

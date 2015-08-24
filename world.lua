@@ -7,11 +7,9 @@ do
 
 
 	function world.render()
-		love.graphics.setShader(tileDamageShader)
 		for k,v in pairs(world.cells) do
 			v:render()
 		end
-		love.graphics.setShader()
 	end
 
 	function world.setTileAt(x, y, obj)
