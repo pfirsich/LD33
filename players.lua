@@ -21,7 +21,7 @@ do
 			jumpStarted = -1000.0,
 			climbing = false,
 			buildingCollision = false,
-			marker = {}
+			facingRight = true,
 		}
 
 		player.position[2] = -player.height
@@ -86,7 +86,6 @@ do
 			player.buildingCollision = false
 
 			local playerTilePos = {world.pixelToTileCoordinates(unpack(player.position))}
-
 			local xrange = math.ceil(tileWidth/player.width)
 			local yrange = math.ceil(tileHeight/player.height)
 			for ty = playerTilePos[2] - yrange, playerTilePos[2] + yrange + 1 do 
@@ -131,6 +130,13 @@ do
 				player.canJump = true
 				player.climbing = false
 			end 
+
+			-- update animation
+			if math.abs(player.velocity[1]/maxVelX) > 0.2 then 
+				player.facingRight = player.velocity[1] > 0.0
+			end 
+
+			
 		end 
 
 		players[#players+1] = player

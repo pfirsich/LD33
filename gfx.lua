@@ -5,6 +5,23 @@ function initGFX()
 
 	bgImage = love.graphics.newImage("gfx/bg.png")
 
+	tileDamageShader = love.graphics.newShader([[
+	uniform Image damageMap;
+	uniform float damage = 0.0;
+
+	vec4 effect(vec4 color, Image texture, vec2 texCoords, vec2 screenCoords) {
+		vec4 c = color * Texel(texture, texCoords);
+		c.a = mix(1.0, Texel(damageMap, texCoords).r, damage);
+		return c;
+	}
+	]])
+
+	damageMaps = {}
+	for i = 1, 5 do 
+		damageMaps[i] = love.graphics.newImage("gfx/dmg_map" .. tostring(i) .. ".png")
+		print(damageMaps[i])
+	end
+
 	buildingTileSets = {
 
 		{
