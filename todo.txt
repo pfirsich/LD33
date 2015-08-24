@@ -1,8 +1,20 @@
 ToDo
 
+- Joel:
+	- Straßenbild
+	- Parallax-Hintergrund
+	- Punch -> Box spawnen und tiles checken und damagen + Animation
+	- NPCs/Soldaten
+		- Soldaten laufen rum, versuchen Abstand zu halten und bewegen sich rum
+		- Zivilisten laufen primär weg
+		- Zivilisten in Fenstern
+		- Zivilisten, die sich random in den Tod stürzen
+		- NPCs greifen
+			- nochmal greifen = fressen
+		- NPCs punchen
+
 - Spieler Charakter
 	- Schlagen
-	- Animationen
 
 - Environment
 	- Gebäude nehmen Schaden (vllt. prozedural?)

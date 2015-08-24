@@ -1,3 +1,5 @@
+uwot = require "anims"
+
 do
 	players = {}
 
@@ -15,27 +17,42 @@ do
 			controller = controller,
 			position = {0, 0},
 			velocity = {0, 0},
-			width = 70,
-			height = 100,
+			width = 50,
+			height = 110,
 			canJump = true,
 			jumpStarted = -1000.0,
 			climbing = false,
 			buildingCollision = false,
 			facingRight = true,
+			skeleton = uwot.newSkeleton("gfx/monstar/monstar.skel"),
 		}
+
+		player.skeleton.animations["idle"] = uwot.newAnimation("gfx/monstar/monstar_idle.anim", 2.0)
+		player.skeleton.animations["run"] = uwot.newAnimation("gfx/monstar/monstar_run.anim")
+		player.skeleton.animations["climb"] = uwot.newAnimation("gfx/monstar/monstar_climb.anim", 2.5)
+		player.skeleton.animations["jump"] = uwot.newAnimation("gfx/monstar/monstar_jump.anim")
+		player.skeleton.animations["fall"] = uwot.newAnimation("gfx/monstar/monstar_fall.anim")
+		player.skeleton.animations["scream"] = uwot.newAnimation("gfx/monstar/monstar_scream.anim")
+
+		player.skeleton.blendInto(0, "idle")
 
 		player.position[2] = -player.height
 
 		function player.draw()
 			love.graphics.setColor(255, 0, 0, 255)
-			love.graphics.rectangle("fill", player.position[1], player.position[2], player.width, player.height)
+			-- hitbox
+			--love.graphics.rectangle("fill", player.position[1], player.position[2], player.width, player.height)
 			love.graphics.setColor(255, 255, 255, 255)
+
+			player.skeleton.flipped = not player.facingRight
+			local xOffset = player.width * (0.5 + 0.15 * (player.skeleton.flipped and 1 or -1))
+			player.skeleton.draw(player.position[1] + xOffset, player.position[2] + player.height, 0, 0.05, 0.05)
 		end
 
 		function player.update()
 			-- accelerate in x direction towards a target velocity (0 if no buttons pressed)
 			local accel = 1000.0
-			local maxVelX = 400.0
+			local maxVelX = player.climbing and 50 or 400.0
 			
 			local targetVelX = maxVelX * player.controller.moveX()
 			if math.abs(targetVelX/maxVelX) < 0.2 then targetVelX = 0 end
@@ -98,8 +115,9 @@ do
 					local mtv = aabbCollision({player.position, {player.width, player.height}}, tileHitBox)
 					if mtv ~= nil then 
 						 -- climbing
-						if tile ~= nil and inSet(tile.type, {"building_lb", "building_lm", "building_lt", "building_rb", "building_rm", "building_rt"}) then
+						if tile ~= nil and inSet(tile.type, {"building_lb", "building_lm", "building_rb", "building_rm"}) then
 							climbCollision = true
+							player.facingRight = (tile.type:sub(10, 10) == 'l')
 						end 
 
 						if tile ~= nil and inSet(tile.type, {"building_rt", "building_mt", "building_lt"}) then 
@@ -132,11 +150,49 @@ do
 			end 
 
 			-- update animation
-			if math.abs(player.velocity[1]/maxVelX) > 0.2 then 
-				player.facingRight = player.velocity[1] > 0.0
-			end 
+			if player.climbing then 
+				if player.skeleton.targetAnimation ~= "climb" then 
+					player.skeleton.blendInto(0.1, "climb")
+					player.skeleton.inClimbAnimation = false
+				else
+				    if player.skeleton.targetKeyframe == 2 then 
+				    	player.skeleton.inClimbAnimation = true
+				    end 
+				end
 
-			
+			    if math.abs(player.velocity[2]) > 1.0 or not player.skeleton.inClimbAnimation then     	
+					player.skeleton.advance(simulationDt)
+				end
+			else 
+				if math.abs(player.velocity[1]/maxVelX) > 0.2 then 
+					player.facingRight = player.velocity[1] > 0.0
+				end
+
+				if player.velocity[2] > 1.0 then 
+					if player.skeleton.targetAnimation ~= "fall" then player.skeleton.blendInto(0.3, "fall") end
+				elseif player.velocity[2] < -1.0 then 
+					if player.skeleton.targetAnimation ~= "jump" then player.skeleton.blendInto(0.3, "jump") end
+				else 
+					if math.abs(player.velocity[1]/maxVelX) > 0.2 then 
+						player.facingRight = player.velocity[1] > 0.0
+						if player.skeleton.targetAnimation ~= "run" then 
+							player.skeleton.blendInto(0.2, "run", 4)
+						end 
+						player.skeleton.animations["run"].speed = math.abs(player.velocity[1]) / 30.0
+					else
+						if player.controller.scream().down then 
+							if player.skeleton.targetAnimation ~= "scream" then 
+								player.skeleton.blendInto(0.5, "scream")
+							end 
+						else 
+							if player.skeleton.targetAnimation ~= "idle" then 
+						    	player.skeleton.blendInto(0.3, "idle")
+						    end
+						end
+					end 
+				end
+				player.skeleton.advance(simulationDt)
+			end
 		end 
 
 		players[#players+1] = player

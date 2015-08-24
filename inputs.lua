@@ -1,12 +1,13 @@
 do
 	-- Controllers
 
-	function newKeyboardController(up, down, left, right, jump, grab)
+	function newKeyboardController(up, down, left, right, jump, grab, scream)
 		local ctrl = {}
 		ctrl.moveX = getFloatInputFromTwoBinaryInputs(keyboardCallback(right), keyboardCallback(left))
 		ctrl.moveY = getFloatInputFromTwoBinaryInputs(keyboardCallback(down), keyboardCallback(up))
 		ctrl.jump = watchBinaryInput(keyboardCallback(jump))
 		ctrl.grab = watchBinaryInput(keyboardCallback(grab))
+		ctrl.scream = watchBinaryInput(keyboardCallback(scream))
 		return ctrl 
 	end 
 
@@ -16,6 +17,7 @@ do
 		ctrl.moveY = getJoystickAxisCallback(joystick, "lefty")
 		ctrl.jump = watchBinaryInput(joystickButtonCallback(joystick, "a"))
 		ctrl.grab = watchBinaryInput(joystickButtonCallback(joystick, "x"))
+		ctrl.scream = watchBinaryInput(joystickButtonCallback(joystick, "y"))
 		return ctrl
 	end 
 
