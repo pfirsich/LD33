@@ -8,7 +8,10 @@ function initGFX()
 
 	vec4 effect(vec4 color, Image texture, vec2 texCoords, vec2 screenCoords) {
 		vec4 c = color * Texel(texture, texCoords);
-		c.a = mix(1.0, Texel(damageMap, texCoords).r, damage);
+		c = mix(c, Texel(damageMap, texCoords * vec2(1.0)), 0.13);
+		float dmgMapVal = Texel(damageMap, texCoords).r;
+		c.a = step(damage, dmgMapVal);
+		c.rgb = c.rgb * mix(1.0, dmgMapVal, damage * 3.0);
 		return c;
 	}
 	]])
@@ -16,7 +19,7 @@ function initGFX()
 	damageMaps = {}
 	for i = 1, 5 do 
 		damageMaps[i] = love.graphics.newImage("gfx/dmg_map" .. tostring(i) .. ".png")
-		print(damageMaps[i])
+		damageMaps[i]:setWrap("repeat", "repeat")
 	end
 
 	parallaxBackgrounds = {}
@@ -39,10 +42,6 @@ function initGFX()
 	uniform Image noiseMap;
     uniform vec2 noiseOffset;
 
-    uniform Image godrayMap;
-    const int samples = 13;
-    const float weights[13] = float[13](0.004571, 0.00723, 0.010989, 0.016048, 0.022521, 0.03037, 0.039354, 0.049003, 0.058632, 0.067411, 0.074476, 0.079066, 0.080657);
-
     const float filmGrainOpacity = 0.08;
 
     const float vignetteRadius = 0.8;
@@ -55,13 +54,6 @@ function initGFX()
         
         float centerDist = length(textureCoords - vec2(0.5));
         float vignette = smoothstep(vignetteRadius, vignetteRadius - vignetteSoftness, centerDist);
-
-        float brightness = 1.0;
-        for(int i = 0; i < samples; ++i) {
-    		brightness += Texel(godrayMap, textureCoords).r * weights[samples-i-1];
-    		textureCoords += vec2(1.0, -1.0) * 0.005;
-    	}
-    	col *= min(1.5, brightness * brightness);
 
         return vec4(mix(col, col * vignette, vignetteOpacity), 1.0);
     }

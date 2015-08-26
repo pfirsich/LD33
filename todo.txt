@@ -11,9 +11,6 @@ ToDo
 			- nochmal greifen = fressen
 		- NPCs punchen
 
-- Seek input:
-	- Lighting?
-
 - Spieler Charakter
 	- Schlagen
 
@@ -46,7 +43,7 @@ ToDo
 		- Fallout-Partikel mit Vortex-Term (vlllt. von Hausrändern emitted? vllt. als Player impact). Spawnen auch Wind-Sounds
 		- Player-Impact Staub-Partikel
 	- Gebäude-Schatten-Godrays (alles weiß, Häuser schwarz drüber, dann nach oben rechts fetchen)
-		- Alles ist doch viel dunkler und weniger beleuchtet. Da ist kein Platz dafür.
+		-> Alles ist doch viel dunkler und weniger beleuchtet. Da ist kein Platz dafür.
 	- Anfangssequenz
 		- Kamera-Zoom auf das Monster mit Partikeln und Wind-Pfeiffen und einer Textbox nebem dem Closeup des monsters mit einführendem, traurigen Monolog
 	- Kriegsschrei-Button (vllt. für Combo-Boni oder special shit)

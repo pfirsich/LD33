@@ -98,21 +98,12 @@ do
 			players[i].draw()
 		end 
 		camera.pop()
-
-		love.graphics.setCanvas(godRayCanvas)
-		godRayCanvas:clear(255, 255, 255, 255)
-		love.graphics.setShader(singleColorShader)
-		singleColorShader:send("uColor", {0, 0, 0, 255})
-		camera.push()
-		world.render()
-		camera.pop()
 		
 		love.graphics.setColor(255, 255, 255, 255)
 		love.graphics.setShader(postProcess)
 		love.graphics.setCanvas()
 		postProcess:send("noiseMap", filmGrainImage)
 		postProcess:send("noiseOffset", {love.math.random(), love.math.random()})
-		postProcess:send("godrayMap", godRayCanvas)
 		love.graphics.draw(postProcessCanvas)
 	end 
 end

@@ -15,8 +15,8 @@ do
 			type = type,
 			shade = shade,
 			render = renderFun,
-			damageMap = damageMaps[love.math.random(1, 5)],
-			damage = 0.0
+			damageMap = damageMaps[love.math.random(1, #damageMaps)],
+			damage = 0.0 -- max: ~0.3
 		}
 	end	
 end
